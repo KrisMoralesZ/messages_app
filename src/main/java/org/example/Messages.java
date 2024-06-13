@@ -12,6 +12,10 @@ public class Messages {
         this.author_name = author_name;
     }
 
+    public Messages() {
+
+    }
+
     public void setId_message(int id_message) {
         this.id_message = id_message;
     }
