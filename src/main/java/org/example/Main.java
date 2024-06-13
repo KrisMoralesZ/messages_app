@@ -26,7 +26,7 @@ public class Main {
                     MessagesService.createMessage();
                     break;
                 case 2:
-                    MessagesService.showMessage();
+                    MessagesService.showMessages();
                     break;
                 case 3:
                     MessagesService.updateMessage();

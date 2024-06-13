@@ -19,7 +19,7 @@ public class MessagesService {
         MessagesDao.createMessageInDB(writeMessage);
     }
 
-    public static void showMessage() {
+    public static void showMessages() {
         MessagesDao.readMessages();
     }
 

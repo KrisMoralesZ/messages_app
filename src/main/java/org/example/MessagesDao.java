@@ -38,11 +38,10 @@ public class MessagesDao {
 
             while(rs.next()){
                 System.out.println("ID: "+rs.getInt("id_message"));
-                System.out.println(rs.getString("Message: "+ rs.getString("message")));
-                System.out.println(rs.getString("Author: "+rs.getString("author_name")));
-                System.out.println(rs.getString("Date: "+ rs.getString("date_message")));
+                System.out.println("Message: "+rs.getString("message"));
             }
         } catch (SQLException e) {
+            System.out.println("Couldn't read messages");
             System.out.println(e);
         }
     }
