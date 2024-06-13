@@ -49,7 +49,24 @@ public class MessagesDao {
 
     }
     public  static  void deleteMessageInDB(int id_message){
+        ConnectWithDB db_connect = new ConnectWithDB();
 
+        try(Connection connection = db_connect.get_connection()) {
+            PreparedStatement preparedStatement = null;
+
+            try {
+                String sql = "DELETE FROM messages WHERE id_message = ?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, id_message);
+                preparedStatement.executeUpdate();
+                System.out.println("Message deleted successfully");
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException e) {
+            System.out.println("Couldn't delete message");
+            System.out.println(e);
+        }
     }
 
 }

@@ -25,5 +25,10 @@ public class MessagesService {
 
     public  static void updateMessage() {}
 
-    public  static void deleteMessage() {}
+    public  static void deleteMessage() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What message do you want to delete?: ");
+        int id_message = scanner.nextInt();
+        MessagesDao.deleteMessageInDB(id_message);
+    }
 }
