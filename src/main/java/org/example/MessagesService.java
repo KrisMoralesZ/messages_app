@@ -23,12 +23,25 @@ public class MessagesService {
         MessagesDao.readMessages();
     }
 
-    public  static void updateMessage() {}
-
     public  static void deleteMessage() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What message do you want to delete?: ");
         int id_message = scanner.nextInt();
         MessagesDao.deleteMessageInDB(id_message);
     }
+
+    public  static void updateMessage() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Write your new message: ");
+        String message = scanner.nextLine();
+
+        System.out.println("Which message do you want to update?: ");
+        int id_message = scanner.nextInt();
+
+        Messages updateMessage = new Messages();
+        updateMessage.setMessage(message);
+        updateMessage.setId_message(id_message);
+        MessagesDao.updateMessageInDB(updateMessage);
+    }
+
 }

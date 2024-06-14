@@ -45,9 +45,7 @@ public class MessagesDao {
             System.out.println(e);
         }
     }
-    public  static  void updateMessageInDB(Messages messages){
 
-    }
     public  static  void deleteMessageInDB(int id_message){
         ConnectWithDB db_connect = new ConnectWithDB();
 
@@ -68,5 +66,29 @@ public class MessagesDao {
             System.out.println(e);
         }
     }
+
+    public static  void updateMessageInDB(Messages messages){
+        ConnectWithDB db_connect = new ConnectWithDB();
+
+        try (Connection connection = db_connect.get_connection()) {
+            PreparedStatement preparedStatement = null;
+
+            try {
+                String sql = "UPDATE messages SET message = ? WHERE id_message = ?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, messages.getMessage());
+                preparedStatement.setInt(2, messages.getId_message());
+                preparedStatement.executeUpdate();
+                System.out.println("Message updated successfully");
+
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException e) {
+            System.out.println("Couldn't update message");
+            System.out.println(e);
+        }
+    }
+
 
 }
